@@ -121,12 +121,12 @@ export default function DashboardPage() {
             <div className="flex items-center space-x-4">
               
               
-              <Link
+              {/* <Link
                 href="/profile"
                 className="text-indigo-600 hover:text-indigo-800 transition duration-300 text-sm font-medium"
               >
                 Profil
-              </Link>
+              </Link> */}
               <button
                 onClick={async () => {
                   await supabase.auth.signOut();
