@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import {createClient} from '../../../lib/supabase';
 import Link from 'next/link';
+import Navbar from '@/component/Navbar';
+import Footer from '@/component/Footer';
 
 type User = {
   id: string;
@@ -107,7 +109,7 @@ export default function ProfilePage() {
     }
   };
 
-  const updatePassword = async () => {
+  const updatePassword = async () => {  
     setPasswordError('');
 
     if (password !== confirmPassword) {
@@ -144,8 +146,8 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      {/* Header/Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
+      <Navbar></Navbar>
+      {/* <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             
@@ -197,6 +199,7 @@ export default function ProfilePage() {
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 
             {/* Mobile menu, show/hide based on menu state */}
             <div className={`${isMenuOpen ? 'block' : 'hidden'} absolute top-16 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg border-t border-indigo-100 z-50`}>
@@ -286,6 +289,11 @@ export default function ProfilePage() {
               </div>
             </div>
           </nav>
+=======
+          </div>
+        </div>
+      </nav> */}
+>>>>>>> 5a2ab2f61d7035293cfea60213d9edbf1fa36473
 
       {/* Decorative circles */}
       <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -302,6 +310,12 @@ export default function ProfilePage() {
               className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
             >
               Lihat Aktivitas Pengguna
+            </button>
+            <button
+              onClick={() => router.push('/daftar-kartu')}
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-2 px-4 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300"
+            >
+              Lihat Daftar Kartu
             </button>
           </div>
 
@@ -547,14 +561,14 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10 mt-auto">
+      <Footer></Footer>
+      {/* <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-indigo-500">
             &copy; 2025 AutoLib. All rights reserved.
           </p>
         </div>
-      </footer>
+      </footer> */}
 
       {/* Font fix & Animation*/}
       <style jsx global>{`

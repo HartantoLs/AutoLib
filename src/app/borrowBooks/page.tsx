@@ -4,7 +4,12 @@ import { useState, useEffect } from 'react';
 import {createClient} from '../../../lib/supabase';
 import { useBorrowStore } from '../../stores/useBorrowState';
 import Link from 'next/link';
+<<<<<<< HEAD
 import { useRouter } from 'next/navigation';
+=======
+import Navbar from '@/component/Navbar';
+import Footer from '@/component/Footer';
+>>>>>>> 5a2ab2f61d7035293cfea60213d9edbf1fa36473
 
 interface Locker {
   id: string;
@@ -247,8 +252,8 @@ export default function BorrowBooksPage() {
   
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      {/* Header/Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
+      <Navbar></Navbar>
+      {/* <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
           
@@ -300,6 +305,7 @@ export default function BorrowBooksPage() {
               </div>
             </div>
           </div>
+<<<<<<< HEAD
 
           {/* Mobile menu, show/hide based on menu state */}
           <div className={`${isMenuOpen ? 'block' : 'hidden'} absolute top-16 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg border-t border-indigo-100 z-50`}>
@@ -389,6 +395,10 @@ export default function BorrowBooksPage() {
             </div>
           </div>
         </nav>
+=======
+        </div>
+      </nav> */}
+>>>>>>> 5a2ab2f61d7035293cfea60213d9edbf1fa36473
 
       {/* Decorative circles */}
       <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -422,7 +432,7 @@ export default function BorrowBooksPage() {
                       date.setMinutes(0, 0, 0); // pastikan menit 0
                       setScheduledPickup(toLocalISOString(date));
                     }}
-                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70"
                   />
                 </div>
               </div>
@@ -445,7 +455,7 @@ export default function BorrowBooksPage() {
                       date.setMinutes(0, 0, 0);
                       setScheduledReturn(toLocalISOString(date));
                     }}
-                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
                   />
                 </div>
               </div>
@@ -461,9 +471,14 @@ export default function BorrowBooksPage() {
                   <select
                     value={pickupLockerId}
                     onChange={e => setPickupLockerId(e.target.value)}
-                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                    className={`
+                      appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white text-gray-800
+                      ${!pickupLockerId ? 'text-gray-500' : 'text-gray-800'}
+                    `}
                   >
-                    <option value="">-- Pilih Loker --</option>
+                    <option value="" disabled hidden>
+                      -- Pilih Loker --
+                    </option>
                     {pickupLockers.map(l => (
                       <option key={l.id} value={l.id}>
                         {l.locker_name}
@@ -487,9 +502,14 @@ export default function BorrowBooksPage() {
                   <select
                     value={returnLockerId}
                     onChange={e => setReturnLockerId(e.target.value)}
-                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                    className={`
+                      appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white text-gray-800
+                      ${!pickupLockerId ? 'text-gray-300' : 'text-gray-800'}
+                    `}
                   >
-                    <option value="">-- Pilih Loker --</option>
+                    <option value="" disabled hidden>
+                      -- Pilih Loker --
+                    </option>
                     {returnLockers.map(l => (
                       <option key={l.id} value={l.id}>
                         {l.locker_name}
@@ -528,14 +548,7 @@ export default function BorrowBooksPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-indigo-500">
-            &copy; 2025 AutoLib. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer></Footer>
 
       {/* Font fix & Animation*/}
       <style jsx global>{`

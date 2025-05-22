@@ -5,7 +5,12 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { debounce } from 'lodash';
+<<<<<<< HEAD
 import { createClient } from '../../../lib/supabase';
+=======
+import Navbar from '@/component/Navbar';
+import Footer from '@/component/Footer';
+>>>>>>> 5a2ab2f61d7035293cfea60213d9edbf1fa36473
 
 interface Book {
   id: string;
@@ -120,8 +125,9 @@ export default function BooksPage() {
   
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
+      <Navbar></Navbar>
       {/* Header/Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
+      {/* <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             {/* Logo */}
@@ -261,7 +267,7 @@ export default function BooksPage() {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Decorative circles */}
       <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -424,13 +430,14 @@ export default function BooksPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10 mt-auto">
+      <Footer></Footer>
+      {/* <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-indigo-500">
             &copy; 2025 AutoLib. All rights reserved.
           </p>
         </div>
-      </footer>
+      </footer> */}
 
       {/* Font fix & Animation*/}
       <style jsx global>{`

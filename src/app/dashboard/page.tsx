@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {createClient} from '../../../lib/supabase';
+import Navbar from '@/component/Navbar';
+import Footer from '@/component/Footer';
 
 interface Book {
   id: string;
@@ -78,18 +80,18 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      {/* Header/Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
+      <Navbar></Navbar>
+      {/* <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
 
-            {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/dashboard" className="text-xl font-bold text-purple-800 hover:text-purple-900 transition duration-300">
                 <span className="text-indigo-800">Auto</span>Lib
               </Link>
             </div>
 
+<<<<<<< HEAD
              {/* Hamburger Menu Button */}
               <div className="flex items-center">
                 <button
@@ -132,6 +134,67 @@ export default function DashboardPage() {
               </div>
             </div>
           </div>
+=======
+            <div className="hidden md:flex items-center space-x-1">
+              <Link
+                href="/books"
+                className="px-3 py-2 rounded-md text-sm font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+              >
+                Jelajahi
+              </Link>
+
+              <Link
+                href="/dashboard"
+                className="px-3 py-2 rounded-md text-sm font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+              >
+                Dashboard
+              </Link>
+              
+              <Link
+                href="/transactions/active"
+                className="px-3 py-2 rounded-md text-sm font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+              >
+                Transaksi
+              </Link>
+
+              <Link
+                href="/transactions/history"
+                className="px-3 py-2 rounded-md text-sm font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+              >
+                Riwayat
+              </Link>
+
+              <Link
+                href="/profile"
+                className="px-3 py-2 rounded-md text-sm font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+              >
+                Profil
+              </Link>
+
+            </div>
+            <div className="flex items-center space-x-4">
+              
+              
+              <Link
+                href="/profile"
+                className="text-indigo-600 hover:text-indigo-800 transition duration-300 text-sm font-medium"
+              >
+                Profil
+              </Link>
+              <button
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  router.push('/login');
+                }}
+                className="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 px-3 py-1 rounded-lg transition duration-300 text-sm font-medium"
+              >
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav> */}
+>>>>>>> 5a2ab2f61d7035293cfea60213d9edbf1fa36473
 
            {/* Mobile menu, show/hide based on menu state */}
             <div className={`${isMenuOpen ? 'block' : 'hidden'} absolute top-16 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg border-t border-indigo-100 z-50`}>
@@ -405,13 +468,14 @@ export default function DashboardPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10 mt-auto">
+      <Footer></Footer>
+      {/* <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-indigo-500">
             &copy; 2025 AutoLib. All rights reserved.
           </p>
         </div>
-      </footer>
+      </footer> */}
 
       {/* Font fix & Animation*/}
       <style jsx global>{`

@@ -1,9 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {createClient} from '../../../../lib/supabase';
+import BookRating from '../../../component/BookRating';
+import Navbar from '@/component/Navbar';
+import Footer from '@/component/Footer';
 
 type Book = {
   title: string
@@ -22,6 +25,7 @@ type Transaction = {
   status_label: string
   books: Book | null
   lockers: Locker | null
+  book_id: string
 }
 
 export default function HistoryPage() {
@@ -59,8 +63,8 @@ export default function HistoryPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      {/* Header/Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
+      <Navbar></Navbar>
+      {/* <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             
@@ -200,14 +204,12 @@ export default function HistoryPage() {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
-      {/* Decorative circles */}
       <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
       <div className="absolute top-20 right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-40 left-1/2 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
 
-      {/* Main Content */}
       <div className="container mx-auto px-4 py-8 relative z-10 flex-grow">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white/80 backdrop-blur-sm py-6 px-6 rounded-2xl shadow-xl border border-indigo-100 mb-6">
@@ -309,6 +311,16 @@ export default function HistoryPage() {
                         </span>
                       </div>
                     </div>
+
+                    {tx.status === 'finished' && (
+                      <div className="mt-4 pt-4 border-t border-indigo-100">
+                        <h4 className="text-sm font-medium text-indigo-700 mb-2">Beri Penilaian Buku</h4>
+                        <BookRating 
+                          bookId={tx.book_id}
+                          className="justify-start items-center"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -328,16 +340,8 @@ export default function HistoryPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-indigo-500">
-            &copy; 2025 AutoLib. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer></Footer>
 
-      {/* Font fix & Animation*/}
       <style jsx global>{`
         html, body {
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
