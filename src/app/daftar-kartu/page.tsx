@@ -116,7 +116,7 @@ export default function RegisterCardPage() {
     try {
       // Ganti dengan IP ESP32 yang sebenarnya
       const ESP32_IP = '192.168.84.238'; // Sesuaikan dengan IP ESP32 Anda
-      const response = await fetch(`http://${ESP32_IP}/registerCard`, {
+      const response = await fetch('https://c0c6-202-146-244-170.ngrok-free.app/registerCard', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
