@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {createClient} from '../../../../lib/supabase';
 import BookRating from '../../../component/BookRating';
+import Navbar from '@/component/Navbar';
+import Footer from '@/component/Footer';
 
 type Book = {
   title: string
@@ -59,7 +61,8 @@ export default function HistoryPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
+      <Navbar></Navbar>
+      {/* <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
@@ -85,7 +88,7 @@ export default function HistoryPage() {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
       <div className="absolute top-20 right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -221,13 +224,7 @@ export default function HistoryPage() {
         </div>
       </div>
 
-      <footer className="bg-white/80 backdrop-blur-sm py-4 border-t border-indigo-100 relative z-10 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-indigo-500">
-            &copy; 2025 AutoLib. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer></Footer>
 
       <style jsx global>{`
         html, body {
