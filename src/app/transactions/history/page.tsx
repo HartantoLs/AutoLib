@@ -63,19 +63,19 @@ export default function HistoryPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      <Navbar></Navbar>
-      {/* <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
+      {/* Header/Navigation */}
+      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
-            
-              <div className="flex-shrink-0 flex items-center">
-                <Link href="/dashboard" className="text-xl font-bold text-purple-600 hover:text-purple-800 transition duration-300">
-                  <span className="text-indigo-800">Auto</span>Lib
-                </Link>
-              </div>
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center">
+              <Link href="/dashboard" className="text-xl font-bold text-purple-800 hover:text-purple-900 transition duration-300">
+                <span className="text-indigo-800">Auto</span>Lib
+              </Link>
+            </div>
           
-            {/* Hamburger Menu Button */}
-            <div className="flex items-center">
+             {/* Hamburger Menu Button */}
+             <div className="flex items-center">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition duration-300"
@@ -204,8 +204,9 @@ export default function HistoryPage() {
             </div>
           </div>
         </div>
-      </nav> */}
-
+      </nav>
+      
+      {/* Decorative circles */}           
       <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
       <div className="absolute top-20 right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       <div className="absolute bottom-40 left-1/2 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
