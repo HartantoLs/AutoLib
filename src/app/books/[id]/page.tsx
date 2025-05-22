@@ -70,7 +70,7 @@ export default function BookDetailPage() {
           .eq('status', 'finished')
           .limit(1);
 
-        setCanRate(transactions && transactions.length > 0);
+          setCanRate(!!(transactions && transactions.length > 0));
       } catch (error) {
         console.error('Error checking rating eligibility:', error);
       }
