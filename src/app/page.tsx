@@ -428,7 +428,7 @@ export default function HomePage() {
             <span className="block text-indigo-600">Start your reading journey today.</span>
           </h2>
           <div className="mt-8 flex flex-col sm:flex-row lg:mt-0 lg:flex-shrink-0">
-            <div className="inline-flex rounded-md shadow">
+            <div className="inline-flex rounded-md">
               <button
                 onClick={() => router.push('/register')}
                 className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 hover:shadow-lg transition-all duration-300 relative z-10"
