@@ -136,7 +136,7 @@ export default function ContactPage() {
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-medium text-indigo-800">Program Studi</h3>
-                    <p className="text-indigo-600">Rekayasa Sistem dan Teknologi Informasi<br />Institut Teknologi Bandung</p>
+                    <p className="text-indigo-600">Sistem Teknologi Informasi 2022 <br/> Rekayasa Sistem dan Teknologi Informasi<br />Institut Teknologi Bandung</p>
                   </div>
                 </div>
               </div>

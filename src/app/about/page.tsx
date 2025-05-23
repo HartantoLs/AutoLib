@@ -250,7 +250,7 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-indigo-800 mb-6 text-center">Tim Pengembang</h2>
             <div className="text-center">
               <p className="text-indigo-600 leading-relaxed max-w-3xl mx-auto">
-                AutoLib dikembangkan oleh tim yang terdiri dari mahasiswa yang tergabung dalam kelompok 5 pada mata kuliah Rekayasa Sistem dan Teknologi Informasi Institut Teknologi Bandung. Tim kami menggabungkan keahlian dalam pengembangan sistem informasi, teknologi RFID, dan manajemen perpustakaan untuk menciptakan solusi inovatif yang dapat meningkatkan kualitas layanan perpustakaan di era digital.
+                AutoLib dikembangkan oleh sebuah tim yang terdiri dari 5 orang mahasiswa STI'22 yang mengambil mata kuliah II3240 Rekayasa Sistem dan Teknologi Informasi. Tim kami menggabungkan keahlian dalam pengembangan sistem informasi, teknologi RFID, dan manajemen perpustakaan untuk menciptakan solusi inovatif yang dapat meningkatkan kualitas layanan perpustakaan di era digital.
               </p>
               <div className="mt-8">
                 <button
