@@ -116,54 +116,55 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-<div className="relative overflow-hidden border-b z-10">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-      {/* Text content - Take up 6 columns on large screens */}
-      <div className="col-span-6 py-12 md:py-16 lg:py-20">
-        <div className="sm:text-center lg:text-left">
-          <h1 className="text-3xl tracking-tight font-extrabold text-indigo-900 sm:text-4xl md:text-5xl lg:text-6xl">
-            <span className="block xl:inline">Digital Library</span>{' '}
-            <span className="block text-indigo-600 xl:inline">and Smart Locker</span>
-          </h1>
-          <p className="mt-3 text-base text-indigo-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-            Discover thousands of books, manage your reading list, and borrow your favorite titles all in one place with our RFID-based smart locker system.
-          </p>
-          <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div className="rounded-md shadow sm:mr-3">
-              <button
-                onClick={() => router.push('/books')}
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out md:py-4 md:text-lg md:px-10"
-              >
-                Browse Books
-              </button>
+      <div className="relative overflow-hidden border-b z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+            {/* Text content - Take up 6 columns on large screens */}
+            <div className="col-span-6 py-12 md:py-16 lg:py-20">
+              <div className="sm:text-center lg:text-left">
+                <h1 className="text-3xl tracking-tight font-extrabold text-indigo-900 sm:text-4xl md:text-5xl lg:text-6xl">
+                  <span className="block xl:inline">Digital Library</span>{' '}
+                  <span className="block text-indigo-600 xl:inline">and Smart Locker</span>
+                </h1>
+                <p className="mt-3 text-base text-indigo-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                  Discover thousands of books, manage your reading list, and borrow your favorite titles all in one place with our RFID-based smart locker system.
+                </p>
+                <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                  <div className="rounded-md shadow sm:mr-3">
+                    <button
+                      onClick={() => router.push('/books')}
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out md:py-4 md:text-lg md:px-10"
+                    >
+                      Browse Books
+                    </button>
+                  </div>
+                  <div className="mt-3 sm:mt-0">
+                    <button
+                      onClick={() => router.push('/register')}
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-indigo-700 bg-white/70 backdrop-blur-sm hover:bg-indigo-50 transform hover:-translate-y-1 hover:shadow-md transition-all duration-300 ease-in-out md:py-4 md:text-lg md:px-10"
+                    >
+                      Get RFID Card
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="mt-3 sm:mt-0">
-              <button
-                onClick={() => router.push('/register')}
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-indigo-700 bg-white/70 backdrop-blur-sm hover:bg-indigo-50 transform hover:-translate-y-1 hover:shadow-md transition-all duration-300 ease-in-out md:py-4 md:text-lg md:px-10"
-              >
-                Get RFID Card
-              </button>
+            
+            {/* Illustration - Take up 6 columns on large screens */}
+            <div className="col-span-6 h-96 lg:h-auto">
+              <div className="relative h-full w-full">
+                <EnhancedHeroIllustration />
+              </div>
             </div>
           </div>
         </div>
+        
+        {/* Decorative circles - Reposition to avoid overlap */}
+        <div className="absolute -top-20 -left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-40 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
-      
-      {/* Illustration - Take up 6 columns on large screens */}
-      <div className="col-span-6 h-96 lg:h-auto">
-        <div className="relative h-full w-full">
-          <EnhancedHeroIllustration />
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  {/* Decorative circles - Reposition to avoid overlap */}
-  <div className="absolute -top-20 -left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-  <div className="absolute -top-20 -right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-  <div className="absolute -bottom-40 left-1/2 transform -translate-x-1/2 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-</div>
+
       {/* Features Section */}
       <div className="py-12 md:py-16 bg-white/80 backdrop-blur-sm border-b relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -431,7 +432,11 @@ export default function HomePage() {
             <div className="inline-flex rounded-md">
               <button
                 onClick={() => router.push('/register')}
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transform hover:scale-105 hover:shadow-lg transition-all duration-300 relative z-10"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
+                style={{
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                  isolation: 'isolate'
+                }}
               >
                 Get started
               </button>
@@ -439,7 +444,11 @@ export default function HomePage() {
             <div className="mt-3 sm:mt-0 sm:ml-3">
               <button
                 onClick={() => router.push('/login')}
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-lg text-indigo-600 bg-white/80 backdrop-blur-sm hover:bg-indigo-50 transform hover:scale-105 hover:shadow-md transition-all duration-300 relative z-10"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-lg text-indigo-600 bg-white/80 backdrop-blur-sm hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-300"
+                style={{
+                  boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+                  isolation: 'isolate'
+                }}
               >
                 Login
               </button>
@@ -530,9 +539,14 @@ export default function HomePage() {
           animation-delay: 4s;
         }
         
-        button, a {
-          position: relative;
-          z-index: 10;
+        /* Fix untuk menghilangkan persegi transparan */
+        button {
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+        }
+        
+        button:hover {
+          transform: translateZ(0) scale(1.05) !important;
         }
       `}</style>
     </div>
