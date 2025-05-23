@@ -241,7 +241,7 @@ export default function RegisterCardPage() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Registrasi Kartu RFID</h1>
-              <p className="text-gray-600">Selamat datang, {user.full_name}</p>
+              <p className="text-gray-600">Selamat Datang, {user.full_name}</p>
             </div>
             <button
               onClick={handleSignOut}

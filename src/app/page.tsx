@@ -90,13 +90,13 @@ export default function HomePage() {
         {/* Mobile menu, show/hide based on menu state */}
         <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
           <div className="pt-2 pb-3 space-y-1">
-            <Link
+            {/* <Link
               href="/books"
               className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-indigo-600 hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-800 transition duration-300"
               onClick={() => setIsMenuOpen(false)}
             >
               Books
-            </Link>
+            </Link> */}
             <Link
               href="/login"
               className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-indigo-600 hover:bg-indigo-50 hover:border-indigo-300 hover:text-indigo-800 transition duration-300"
@@ -132,10 +132,10 @@ export default function HomePage() {
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   <div className="rounded-md shadow sm:mr-3">
                     <button
-                      onClick={() => router.push('/books')}
+                      onClick={() => router.push('/login')}
                       className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-in-out md:py-4 md:text-lg md:px-10"
                     >
-                      Browse Books
+                      Enter AutoLib
                     </button>
                   </div>
                   <div className="mt-3 sm:mt-0">

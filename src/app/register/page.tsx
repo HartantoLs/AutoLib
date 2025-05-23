@@ -92,7 +92,7 @@ export default function RegisterPage() {
         <div className="w-full max-w-md">
           <div className="bg-white/80 backdrop-blur-sm py-8 px-6 sm:px-10 rounded-2xl shadow-xl border border-indigo-100">
             <div className="mb-8 text-center">
-              <h2 className="text-3xl font-extrabold text-indigo-700 mb-1">Daftar Akun Baru</h2>
+              <h2 className="text-3xl font-extrabold text-indigo-700 mb-1">Hai, Selamat Datang</h2>
               <p className="text-purple-500">Buat akun untuk mengakses AutoLib</p>
             </div>
             
