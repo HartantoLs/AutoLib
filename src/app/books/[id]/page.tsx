@@ -20,11 +20,260 @@ interface Book {
   total_quantity: number;
 }
 
+// Navigation Component
+function Navigation({ 
+  isMenuOpen, 
+  setIsMenuOpen, 
+  supabase, 
+  router 
+}: {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
+  supabase: any;
+  router: any;
+}) {
+  return (
+    <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/dashboard" className="text-xl font-bold text-purple-800 hover:text-purple-900 transition duration-300">
+              <span className="text-indigo-800">Auto</span>Lib
+            </Link>
+          </div>
+
+          {/* Hamburger Menu Button */}
+          <div className="flex items-center">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition duration-300"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              <svg
+                className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              <svg
+                className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      <div className={`${isMenuOpen ? 'block' : 'hidden'} absolute top-16 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg border-t border-indigo-100 z-50`}>
+        <div className="px-2 pt-2 pb-3 space-y-1">
+          <Link
+            href="/books"
+            className="block px-3 py-2 rounded-md text-base font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <div className="flex items-center">
+              <svg className="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+              Jelajahi
+            </div>
+          </Link>
+
+          <Link
+            href="/dashboard"
+            className="block px-3 py-2 rounded-md text-base font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <div className="flex items-center">
+              <svg className="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2z" />
+              </svg>
+              Dashboard
+            </div>
+          </Link>
+
+          <Link
+            href="/transactions/active"
+            className="block px-3 py-2 rounded-md text-base font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <div className="flex items-center">
+              <svg className="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+              Transaksi
+            </div>
+          </Link>
+
+          <Link
+            href="/transactions/history"
+            className="block px-3 py-2 rounded-md text-base font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <div className="flex items-center">
+              <svg className="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Riwayat
+            </div>
+          </Link>
+
+          <Link
+            href="/profile"
+            className="block px-3 py-2 rounded-md text-base font-medium text-indigo-600 hover:text-indigo-900 hover:bg-indigo-50 transition duration-300"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <div className="flex items-center">
+              <svg className="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Profil
+            </div>
+          </Link>
+
+          <div className="border-t border-indigo-100 pt-2">
+            <button
+              onClick={async () => {
+                await supabase.auth.signOut();
+                router.push('/login');
+                setIsMenuOpen(false);
+              }}
+              className="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-red-600 hover:text-red-900 hover:bg-red-50 transition duration-300"
+            >
+              <div className="flex items-center">
+                <svg className="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Logout
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+// Loading Component
+function LoadingState({ isMenuOpen, setIsMenuOpen, supabase, router }: {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
+  supabase: any;
+  router: any;
+}) {
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
+      <Navigation 
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        supabase={supabase}
+        router={router}
+      />
+      
+      {/* Decorative circles */}
+      <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div className="absolute top-20 right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-40 left-1/2 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+      <div className="container mx-auto px-4 py-8 relative z-10 flex-grow flex items-center justify-center">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-indigo-100 p-8">
+          <div className="flex items-center justify-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600 mr-4"></div>
+            <p className="text-indigo-800 text-lg font-medium">Memuat detail buku...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Error Component
+function ErrorState({ 
+  error, 
+  isMenuOpen, 
+  setIsMenuOpen, 
+  supabase, 
+  router 
+}: {
+  error: string;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
+  supabase: any;
+  router: any;
+}) {
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
+      <Navigation 
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        supabase={supabase}
+        router={router}
+      />
+
+      {/* Decorative circles */}
+      <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div className="absolute top-20 right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-40 left-1/2 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+      <div className="container mx-auto px-4 py-8 relative z-10 flex-grow">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md text-red-700 mb-6">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm font-medium">{error || 'Buku tidak ditemukan'}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <Link 
+              href="/books" 
+              className="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition duration-300 font-medium"
+            >
+              <svg className="h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Kembali ke Daftar Buku
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function BookDetailPage() {
   const router = useRouter();
   const setBookId = useBorrowStore((state: any) => state.setBookId);
   const supabase = createClient();
-   
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const params = useParams();
   const id = params?.id as string;
 
@@ -32,7 +281,7 @@ export default function BookDetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // states untuk tombol pinjam
+  // States untuk tombol pinjam
   const [borrowing, setBorrowing] = useState(false);
   const [borrowError, setBorrowError] = useState<string | null>(null);
   const [borrowSuccess, setBorrowSuccess] = useState<boolean>(false);
@@ -70,7 +319,7 @@ export default function BookDetailPage() {
           .eq('status', 'finished')
           .limit(1);
 
-          setCanRate(!!(transactions && transactions.length > 0));
+        setCanRate(!!(transactions && transactions.length > 0));
       } catch (error) {
         console.error('Error checking rating eligibility:', error);
       }
@@ -85,235 +334,95 @@ export default function BookDetailPage() {
     router.push('/borrowBooks');
   };
 
-  if (loading) return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      {/* Header/Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <Link href="/" className="text-xl font-bold text-purple-600 hover:text-purple-800 transition duration-300">
-                  <span className="text-indigo-600">Auto</span>Lib
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/profile"
-                className="text-indigo-600 hover:text-indigo-800 transition duration-300 text-sm font-medium"
-              >
-                Profil
-              </Link>
-              <button
-                onClick={async () => {
-                  await supabase.auth.signOut();
-                  router.push('/login');
-                }}
-                className="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 px-3 py-1 rounded-lg transition duration-300 text-sm font-medium"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+  if (loading) {
+    return (
+      <>
+        <LoadingState 
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          supabase={supabase}
+          router={router}
+        />
+        <style jsx global>{`
+          @keyframes blob {
+            0% {
+              transform: translate(0px, 0px) scale(1);
+            }
+            33% {
+              transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+              transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+              transform: translate(0px, 0px) scale(1);
+            }
+          }
+          .animate-blob {
+            animation: blob 7s infinite;
+          }
+          .animation-delay-2000 {
+            animation-delay: 2s;
+          }
+          .animation-delay-4000 {
+            animation-delay: 4s;
+          }
+        `}</style>
+      </>
+    );
+  }
 
-      {/* Decorative circles */}
-      <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-      <div className="absolute top-20 right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-40 left-1/2 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-
-      <div className="container mx-auto px-4 py-12 relative z-10 flex-grow">
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
-        </div>
-      </div>
-
-      {/* Animation styles */}
-      <style jsx global>{`
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
+  if (error || !book) {
+    return (
+      <>
+        <ErrorState 
+          error={error || 'Buku tidak ditemukan'}
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          supabase={supabase}
+          router={router}
+        />
+        <style jsx global>{`
+          html, body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            background: linear-gradient(to bottom right, #dbeafe, #f3e8ff, #e0e7ff);
           }
-          33% {
-            transform: translate(30px, -30px) scale(1.1);
+          @keyframes blob {
+            0% {
+              transform: translate(0px, 0px) scale(1);
+            }
+            33% {
+              transform: translate(30px, -30px) scale(1.1);
+            }
+            66% {
+              transform: translate(-20px, 20px) scale(0.9);
+            }
+            100% {
+              transform: translate(0px, 0px) scale(1);
+            }
           }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
+          .animate-blob {
+            animation: blob 7s infinite;
           }
-          100% {
-            transform: translate(0px, 0px) scale(1);
+          .animation-delay-2000 {
+            animation-delay: 2s;
           }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
-    </div>
-  );
-
-  if (error || !book) return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      {/* Header/Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <Link href="/" className="text-xl font-bold text-purple-600 hover:text-purple-800 transition duration-300">
-                  <span className="text-indigo-600">Auto</span>Lib
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/profile"
-                className="text-indigo-600 hover:text-indigo-800 transition duration-300 text-sm font-medium"
-              >
-                Profil
-              </Link>
-              <button
-                onClick={async () => {
-                  await supabase.auth.signOut();
-                  router.push('/login');
-                }}
-                className="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 px-3 py-1 rounded-lg transition duration-300 text-sm font-medium"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Decorative circles */}
-      <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-      <div className="absolute top-20 right-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-40 left-1/2 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-
-      <div className="container mx-auto px-4 py-8 relative z-10 flex-grow">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-red-50 border-l-4 border-red-500 p-4 rounded-md text-red-700 mb-6">
-            <div className="flex">
-              <div className="flex-shrink-0">
-                <svg className="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div className="ml-3">
-                <p className="text-sm font-medium">{error || 'Buku tidak ditemukan'}</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <Link 
-              href="/books" 
-              className="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition duration-300 font-medium"
-            >
-              <svg className="h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Kembali ke Daftar Buku
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Animation styles */}
-      <style jsx global>{`
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
+          .animation-delay-4000 {
+            animation-delay: 4s;
           }
-          33% {
-            transform: translate(30px, -30px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
-    </div>
-  );
+        `}</style>
+      </>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-100 via-purple-100 to-indigo-100 font-sans">
-      {/* Header/Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-sm z-20 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex">
-              <div className="flex-shrink-0 flex items-center">
-                <Link href="/" className="text-xl font-bold text-purple-600 hover:text-purple-800 transition duration-300">
-                  <span className="text-indigo-600">Auto</span>Lib
-                </Link>
-              </div>
-              <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <Link
-                  href="/"
-                  className="text-indigo-600 hover:text-indigo-800 px-3 py-2 text-sm font-medium transition duration-300"
-                >
-                  Dashboard
-                </Link>
-                <Link
-                  href="/books"
-                  className="border-b-2 border-indigo-600 text-indigo-800 px-3 py-2 text-sm font-medium transition duration-300"
-                >
-                  Buku
-                </Link>
-                <Link
-                  href="/transactions/active"
-                  className="text-indigo-600 hover:text-indigo-800 px-3 py-2 text-sm font-medium transition duration-300"
-                >
-                  Transaksi Aktif
-                </Link>
-                <Link
-                  href="/transactions/history"
-                  className="text-indigo-600 hover:text-indigo-800 px-3 py-2 text-sm font-medium transition duration-300"
-                >
-                  Riwayat
-                </Link>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Link
-                href="/profile"
-                className="text-indigo-600 hover:text-indigo-800 transition duration-300 text-sm font-medium"
-              >
-                Profil
-              </Link>
-              <button
-                onClick={async () => {
-                  await supabase.auth.signOut();
-                  router.push('/login');
-                }}
-                className="bg-indigo-100 text-indigo-600 hover:bg-indigo-200 px-3 py-1 rounded-lg transition duration-300 text-sm font-medium"
-              >
-                Logout
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation 
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        supabase={supabase}
+        router={router}
+      />
 
       {/* Decorative circles */}
       <div className="absolute top-40 left-20 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
