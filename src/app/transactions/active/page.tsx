@@ -291,9 +291,9 @@ export default function BorrowedBooksPage() {
              tx.status === 'canceled' ? 'Dibatalkan' : tx.status}
           </span>
         </p>
-        <p><span className="font-medium text-indigo-600">Jadwal Ambil:</span> {formatDate(tx.scheduled_pickup_time)}</p>
+        <p className='text-indigo-900'><span className="font-medium text-indigo-600">Jadwal Ambil:</span> {formatDate(tx.scheduled_pickup_time)}</p>
         {tx.actual_pickup_time && <p><span className="font-medium text-indigo-600">Diambil pada:</span> {formatDate(tx.actual_pickup_time)}</p>}
-        <p><span className="font-medium text-indigo-600">Jadwal Kembali:</span> {formatDate(tx.scheduled_return_time)}</p>
+        <p className='text-indigo-900'><span className="font-medium text-indigo-600">Jadwal Kembali:</span> {formatDate(tx.scheduled_return_time)}</p>
         {tx.actual_return_time && <p><span className="font-medium text-indigo-600">Dikembalikan pada:</span> {formatDate(tx.actual_return_time)}</p>}
       </div>
 

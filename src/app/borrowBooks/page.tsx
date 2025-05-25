@@ -422,7 +422,7 @@ export default function BorrowBooksPage() {
                       date.setMinutes(0, 0, 0); // pastikan menit 0
                       setScheduledPickup(toLocalISOString(date));
                     }}
-                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70"
                   />
                 </div>
               </div>
@@ -445,7 +445,7 @@ export default function BorrowBooksPage() {
                       date.setMinutes(0, 0, 0);
                       setScheduledReturn(toLocalISOString(date));
                     }}
-                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
                   />
                 </div>
               </div>
@@ -461,9 +461,13 @@ export default function BorrowBooksPage() {
                   <select
                     value={pickupLockerId}
                     onChange={e => setPickupLockerId(e.target.value)}
-                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                    className={`
+                      appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white text-gray-800
+                      ${!pickupLockerId ? 'text-gray-300' : 'text-gray-800'}`}
                   >
-                    <option value="">-- Pilih Loker --</option>
+                     <option value="" disabled hidden>
+                      -- Pilih Loker --
+                    </option>
                     {pickupLockers.map(l => (
                       <option key={l.id} value={l.id}>
                         {l.locker_name}
@@ -487,9 +491,13 @@ export default function BorrowBooksPage() {
                   <select
                     value={returnLockerId}
                     onChange={e => setReturnLockerId(e.target.value)}
-                    className="appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white/70 backdrop-blur-sm"
+                    className={`
+                      appearance-none block w-full pl-10 pr-3 py-2 border border-indigo-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 bg-white text-gray-800
+                      ${!pickupLockerId ? 'text-gray-300' : 'text-gray-800'}`}
                   >
-                    <option value="">-- Pilih Loker --</option>
+                     <option value="" disabled hidden>
+                      -- Pilih Loker --
+                    </option>
                     {returnLockers.map(l => (
                       <option key={l.id} value={l.id}>
                         {l.locker_name}

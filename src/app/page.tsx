@@ -227,7 +227,7 @@ export default function HomePage() {
                 <div className="ml-14 sm:ml-16">
                   <h3 className="text-base sm:text-lg leading-6 font-medium text-indigo-800">Book Borrowing & Return</h3>
                   <p className="mt-2 text-sm sm:text-base text-indigo-600">
-                    Borrow and return books 24/7 through our smart locker system. Simply scan your RFID card, pick up or return your books, and you're done - no waiting in line or paperwork.
+                    Borrow and return books 24/7 through our smart locker system. Simply scan your RFID card, pick up or return your books, and done - no waiting in line or paperwork.
                   </p>
                 </div>
               </div>
